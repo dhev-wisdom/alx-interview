@@ -3,6 +3,7 @@
 Module defines a function that creates Pascal triangle(s)
 """
 
+
 def pascal_triangle(n):
     """
     Pascal triangle:
