@@ -5,12 +5,18 @@ Module reads from stdin
 
 import sys
 
-def print_stats(total, status_code):
+def print_stats(total, status_code) -> None:
+    """
+    function aids main function in printing stats
+    """
     print(f"File size: {total}")
     for code, count in sorted(status_code.items()):
         print(f"{code}: {count}")
 
-def read_from_stdin():
+def read_from_stdin() -> None:
+    """
+    main function that reads lines from stdin
+    """
     line_count = 0
     total_size = 0
     status_code_count = {}
