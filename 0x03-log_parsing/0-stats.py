@@ -7,7 +7,7 @@ import sys
 
 def print_stats(total, status_code):
     print(f"File size: {total}")
-    for code, count in sorted(status.items()):
+    for code, count in sorted(status_code.items()):
         print(f"{code}: {count}")
 
 def read_from_stdin():
@@ -20,7 +20,7 @@ def read_from_stdin():
             line = line.strip()
             parts = line.split(" ")
             if len(parts) < 7:
-              continue
+                continue
 
             status_code = parts[-2]
             try:
