@@ -11,7 +11,7 @@ def prime(num) -> bool:
     """
     Function check if number is prime or not
     """
-    flag: bool = True
+    flag = True
     if num == 1:
         flag = False
     elif num > 1:
