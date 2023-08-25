@@ -7,6 +7,7 @@ UTF-8 Validation
 
 from typing import List
 
+
 def validUTF8(data):
     """
     UTF-8 Validation
@@ -33,4 +34,3 @@ def validUTF8(data):
             num_bytes_to_follow -= 1
 
     return num_bytes_to_follow == 0
-
