@@ -7,14 +7,30 @@ UTF-8 Validation
 
 from typing import List
 
+def validUTF8(data):
+    """
+    UTF-8 Validation
+    """
+    num_bytes_to_follow = 0
 
-def validUTF8(data: List[int]) -> bool:
-    """
-    Function determines if a given data set represents a valid UTF-8 encoding.
-    """
-    ans: bool = True
-    for item in data:
-        if item >= 256:
-            ans = False
-            break
-    return ans
+    for byte in data:
+        byte_value = byte & 0xFF
+
+        if num_bytes_to_follow == 0:
+            if (byte_value >> 7) == 0b0:
+                continue
+            elif (byte_value >> 5) == 0b110:
+                num_bytes_to_follow = 1
+            elif (byte_value >> 4) == 0b1110:
+                num_bytes_to_follow = 2
+            elif (byte_value >> 3) == 0b11110:
+                num_bytes_to_follow = 3
+            else:
+                return False
+        else:
+            if (byte_value >> 6) != 0b10:
+                return False
+            num_bytes_to_follow -= 1
+
+    return num_bytes_to_follow == 0
+
