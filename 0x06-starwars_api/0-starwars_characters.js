@@ -2,7 +2,7 @@
 
 const request = require('request');
 
-const id = process.argv[2]
+const id = process.argv[2];
 const url = `https://swapi-api.alx-tools.com/api/films/${id}/`;
 
 request(url, (err, response, body) => {
@@ -14,12 +14,12 @@ request(url, (err, response, body) => {
   console.log(film.title);
   const characterUrls = film.characters;
 
-  function fetchCharacter(char_url) {
+  function fetchCharacter (charUrl) {
     return new Promise((resolve, reject) => {
-      request(char_url, (err, response, body) => {
+      request(charUrl, (err, response, body) => {
         if (err) {
           reject(err);
-        } else if (response.statusCode == 200) {
+        } else if (response.statusCode === 200) {
           const character = JSON.parse(body);
           resolve(character.name);
         } else {
