@@ -11,7 +11,6 @@ request(url, (err, response, body) => {
     return;
   }
   const film = JSON.parse(body);
-  console.log(film.title);
   const characterUrls = film.characters;
 
   function fetchCharacter (charUrl) {
