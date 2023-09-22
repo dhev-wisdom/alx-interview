@@ -4,7 +4,6 @@ determine the fewest number of coins needed to meet a given amount
 """
 
 from typing import List
-import math
 
 
 def makeChange(coins: List[int], total: int) -> int:
@@ -13,21 +12,19 @@ def makeChange(coins: List[int], total: int) -> int:
     """
     if total <= 0:
         return 0
-    coins.sort()
-    if len(coins) == 0 or coins[len(coins) - 1] == 0:
+    coins.sort(reverse=True)
+    if len(coins) == 0 or coins[0] == 0:
         return 0
-    times = 0
-    for i in range(len(coins) - 1, 0, -1):
-        if i == 0 and total != 0:
-            return -1
-        ans = total / coins[i]
-        ans = math.floor(ans)
-        if ans < 1:
+    num_coins, remaining_total = 0, total
+    for coin in coins:
+        if coin == 0:
             continue
-        times += ans
-        total = total - (coins[i] * ans)
-        continue
-    if total == 0:
-        return times
+        if remaining_total == 0:
+            break
+        number_of_coins = remaining_total // coin
+        num_coins += number_of_coins
+        remaining_total -= number_of_coins * coin
+    if remaining_total == 0:
+        return num_coins
     else:
         return -1
