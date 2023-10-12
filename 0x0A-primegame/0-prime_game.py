@@ -14,6 +14,9 @@ def isWinner(x, nums):
     Return: Name of Winner
     """
 
+    if x < 1:
+        return None
+    
     winners = []
 
     def is_prime(number):
