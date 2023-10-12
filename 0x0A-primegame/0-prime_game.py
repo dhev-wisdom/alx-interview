@@ -28,6 +28,7 @@ def isWinner(x, nums):
         return True
 
     def play_game(n):
+        """simulate game play"""
         num_list = list(range(1, n + 1))
         maria_turn = True
         game_over = False
