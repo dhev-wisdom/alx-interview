@@ -6,7 +6,7 @@ Module reads from stdin
 import sys
 
 
-def print_stats(total, status_code) -> None:
+def print_stats(total: int, status_code: dict) -> None:
     """
     function aids main function in printing stats
     """
@@ -22,6 +22,8 @@ def read_from_stdin() -> None:
     line_count = 0
     total_size = 0
     status_code_count = {}
+
+    # print_stats(total_size, status_code_count)
 
     try:
         for line in sys.stdin:
@@ -46,9 +48,8 @@ def read_from_stdin() -> None:
                 pass
 
             line_count += 1
-            if line_count == 10:
+            if line_count % 10 == 0:
                 print_stats(total_size, status_code_count)
-                line_count = 0
     except KeyboardInterrupt:
         print_stats(total_size, status_code_count)
 
