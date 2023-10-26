@@ -8,8 +8,10 @@ from typing import List
 
 def makeChange(coins: List[int], total: int) -> int:
     """
-    Return the fewest number of `coins` needed to meet `total`
+    Return the fewest number of `coins` needed to arive at `total`
     """
+    if not coins:
+        return -1
     if total <= 0:
         return 0
     coins.sort(reverse=True)
